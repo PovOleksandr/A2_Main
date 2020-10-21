@@ -1,12 +1,12 @@
 
-.../dorm/crDorm
-.../dorm/pay
-.../party
-.../clean/crJanitor
-.../clean/cleanDorm
-.../students/crStudent
-.../students/salary
-.../students/moveIn
-.../students/kickedOut
-.../entrance/tryToEnter
-.../entrance/crWatchman
+1./dorm/crDorm
+2./dorm/pay
+3./party
+4./clean/crJanitor
+5./clean/cleanDorm
+6./students/crStudent
+7./students/salary
+8./students/moveIn
+9./students/kickedOut
+10./entrance/tryToEnter
+11./entrance/crWatchman
