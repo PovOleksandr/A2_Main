@@ -17,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 public class MainLab2Application {
 
-    private static final String URL = "http://localhost:8083";
+    private static final String URL = "http://localhost:8086";
     private static final RestTemplate restTemplate = new RestTemplate();
     private static final HttpHeaders headers = new HttpHeaders();
     private static final HttpEntity<Object> headersEntity = new HttpEntity<>(headers);
@@ -27,7 +27,7 @@ public class MainLab2Application {
         headers.setContentType(MediaType.APPLICATION_JSON);
 
         Dorm dorm1 = new Dorm(1,100,20,700);
-        Dorm dorm2 = new Dorm(2,75,30,550);
+        Dorm dorm2 = new Dorm(2,75,40,550);
         Dorm dorm3 = new Dorm(3,60,35,400);
 
         saveDorm(dorm1);
@@ -120,22 +120,18 @@ public class MainLab2Application {
 
     public static void moveIn(Dorm dorm, Student student){
         MoveInKickOutDto moveInKickOutDto = new MoveInKickOutDto(student,dorm);
-        Gson gson = new GsonBuilder().disableHtmlEscaping().create();
-        String deliverJsonStr = gson.toJson(moveInKickOutDto);
 
-        HttpEntity<String> deliverJson = new HttpEntity<>(deliverJsonStr, headers);
+        HttpEntity<MoveInKickOutDto> moveInKickOutDtoHttpEntity = new HttpEntity<>(moveInKickOutDto, headers);
         ResponseEntity<Void> response1 = restTemplate.exchange(URL + "/students/moveIn",
-                HttpMethod.POST, deliverJson, Void.class);
+                HttpMethod.POST, moveInKickOutDtoHttpEntity, Void.class);
     }
 
     public static void cleanDorm(Janitor janitor, Dorm dorm){
         CleanDto cleanDto = new CleanDto(janitor,dorm);
-        Gson gson = new GsonBuilder().disableHtmlEscaping().create();
-        String deliverJsonStr = gson.toJson(cleanDto);
 
-        HttpEntity<String> deliverJson = new HttpEntity<>(deliverJsonStr, headers);
+        HttpEntity<CleanDto> cleanDtoHttpEntity = new HttpEntity<>(cleanDto, headers);
         ResponseEntity<Void> response1 = restTemplate.exchange(URL + "/clean/cleanDorm",
-                HttpMethod.POST, deliverJson, Void.class);
+                HttpMethod.POST, cleanDtoHttpEntity, Void.class);
     }
 
     public static void party(Dorm dorm){
@@ -143,19 +139,18 @@ public class MainLab2Application {
                 dorm.getCleanliness(),
                 dorm.getNumOfFreeRooms(),
                 dorm.getMonthPrice());
-        HttpEntity<DormDto> giveDorm = new HttpEntity<>(dormDto);
+        dormDto.setId(dorm.getId());
+        HttpEntity<DormDto> giveDorm = new HttpEntity<>(dormDto,headers);
         ResponseEntity<Void> response0 = restTemplate.exchange(URL + "/party",
                 HttpMethod.POST, giveDorm, Void.class);
     }
 
     public static void tryToEnter(Student student,Watchman watchman){
         EntranceDto entranceDto = new EntranceDto(watchman,student);
-        Gson gson = new GsonBuilder().disableHtmlEscaping().create();
-        String deliverJsonStr = gson.toJson(entranceDto);
 
-        HttpEntity<String> deliverJson = new HttpEntity<>(deliverJsonStr, headers);
+        HttpEntity<EntranceDto> entranceDtoHttpEntity = new HttpEntity<>(entranceDto, headers);
         ResponseEntity<Void> response1 = restTemplate.exchange(URL + "/entrance/tryToEnter",
-                HttpMethod.POST, deliverJson, Void.class);
+                HttpMethod.POST, entranceDtoHttpEntity, Void.class);
     }
 
     public static void payingForDorm(Dorm dorm){
@@ -163,7 +158,7 @@ public class MainLab2Application {
                 dorm.getCleanliness(),
                 dorm.getNumOfFreeRooms(),
                 dorm.getMonthPrice());
-        HttpEntity<DormDto> giveDorm = new HttpEntity<>(dormDto);
+        HttpEntity<DormDto> giveDorm = new HttpEntity<>(dormDto,headers);
         ResponseEntity<Void> response0 = restTemplate.exchange(URL + "/dorm/pay",
                 HttpMethod.POST, giveDorm, Void.class);
     }

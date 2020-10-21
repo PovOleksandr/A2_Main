@@ -10,6 +10,7 @@ final public class DormDto {
     private int income = 0;
     private UUID id;
 
+
     public DormDto(int dormNumber, int cleanliness, int numOfRooms, int monthPrice ){
         this.dormNumber = dormNumber;
         this.cleanliness = cleanliness;
@@ -19,23 +20,52 @@ final public class DormDto {
 
     public DormDto() { }
 
-    public int getNumOfFreeRooms(){return this.numOfFreeRooms;}
 
-    public int getDormNumber(){return this.dormNumber;}
-
-    public int getCleanliness(){
-        return this.cleanliness;
+    public int getDormNumber() {
+        return dormNumber;
     }
 
-    public int getMonthPrice(){return this.monthPrice;}
-
-    public void setCleanliness(int value){
-        this.cleanliness += value;
+    public void setDormNumber(int dormNumber) {
+        this.dormNumber = dormNumber;
     }
 
-    public void changeRooms(int value){
-        this.numOfFreeRooms += value;
+    public int getCleanliness() {
+        return cleanliness;
     }
 
-    public void increaceIncome( float value){ this.income += value; }
+    public void setCleanliness(int cleanliness) {
+        this.cleanliness = cleanliness;
+    }
+
+    public int getNumOfFreeRooms() {
+        return numOfFreeRooms;
+    }
+
+    public void setNumOfFreeRooms(int numOfFreeRooms) {
+        this.numOfFreeRooms = numOfFreeRooms;
+    }
+
+    public int getMonthPrice() {
+        return monthPrice;
+    }
+
+    public void setMonthPrice(int monthPrice) {
+        this.monthPrice = monthPrice;
+    }
+
+    public int getIncome() {
+        return income;
+    }
+
+    public void setIncome(int income) {
+        this.income = income;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
 }

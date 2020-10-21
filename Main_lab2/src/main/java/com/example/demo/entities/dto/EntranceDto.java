@@ -11,4 +11,20 @@ public class EntranceDto {
         this.watchman = watchman;
         this.student = student;
     }
+
+    public Watchman getWatchman() {
+        return watchman;
+    }
+
+    public void setWatchman(Watchman watchman) {
+        this.watchman = watchman;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 }
