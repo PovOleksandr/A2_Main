@@ -67,4 +67,13 @@ final public class Dorm {
     public void setId(UUID id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Dorm{" +
+                "dormNumber=" + dormNumber +
+                ", numOfFreeRooms=" + numOfFreeRooms +
+                ", monthPrice=" + monthPrice +
+                '}';
+    }
 }
