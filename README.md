@@ -1,12 +1,5 @@
-
-1./dorm/crDorm
-2./dorm/pay
-3./party
-4./clean/crJanitor
-5./clean/cleanDorm
-6./students/crStudent
-7./students/salary
-8./students/moveIn
-9./students/kickedOut
-10./entrance/tryToEnter
-11./entrance/crWatchman
+CleanDormServiceController: GET('/clean),GET('/clean/{id}'), POST('/clean/crJanitor'), POST('/clean/cleanDorm'),DELETE('/clean/{id}')
+EntranceServiceController: GET('/entrance'), GET('/entrance/{id}'), POST('/entrance/crWatchman'), POST('/entrance/tryToEnter'),DELETE('/entrance/{id}')
+InOutServiceController: GET('/students'),GET('/students/{id}'),POST('/students/crStudent'),POST('/students/kickedOut'),POST('/students/moveIn'),DELETE('/students/{id}')
+PayingServiceController: GET('/dorm'),GET('/dorm/{id}'),POST('/dorm/crDorm'),POST('/dorm/pay'),DELETE('/dorm/{id}')
+PartyServiceController:POST('/party')
